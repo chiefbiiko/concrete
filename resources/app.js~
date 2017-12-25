@@ -1,0 +1,7 @@
+// app.js
+
+function init () {
+  document.body.innerText += 'fraudalicious'
+}
+
+window.onload = init
