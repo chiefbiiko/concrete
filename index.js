@@ -1,49 +1,53 @@
 var fs = require('fs')
 var http = require('http')
 var path = require('path')
-var pump = require('pump')
+var zlib = require('zlib')
 
 var HOST = process.argv[3] || '127.0.0.1'
 var PORT = parseInt(process.argv[2]) || 50000
 
-var HTML = path.join(__dirname,'resources', 'index.html.gz')
-var JS = path.join(__dirname, 'resources', 'app.js.gz')
-var CSS = path.join(__dirname, 'resources', 'style.css.gz')
-	
+var RESOURCES = path.join(__dirname, 'RESOURCES')
+
+var HTML = loadGzipBufferSync(path.join(RESOURCES, 'index.html'))
+var JS   = loadGzipBufferSync(path.join(RESOURCES, 'app.js'))
+var CSS  = loadGzipBufferSync(path.join(RESOURCES, 'style.css'))
+
+var PICS = new Map(
+  fs.readdirSync(path.join(RESOURCES, 'img')).map(function (pic) {
+    return [ pic, loadGzipBufferSync(path.join(RESOURCES, 'img', pic)) ]
+  })
+)
+
+function loadGzipBufferSync(file) {
+  return zlib.gzipSync(fs.readFileSync(file))
+}
+
 function onlisten () {
   console.log('httpserver listening @ ' + HOST + ':' + PORT)
 }
 
-function router (req, res) {
-  var readStream
+function router (req, res) { // keep-alive? share tcp socket with chat ws: ?
+  var base = path.basename(req.url)
 
-  if (/(index\.html)|(\/)$/i.test(req.url)) {
+  res.statusCode = 200
+  res.setHeader('Content-Encoding', 'gzip')
+
+  if (!base || base === '/') {
     res.setHeader('Content-Type', 'text/html')
-    readStream = fs.createReadStream(HTML)
-  } else if (/app\.js$/i.test(req.url)) {
+    res.end(HTML)
+  } else if (base === 'app.js') {
     res.setHeader('Content-Type', 'application/javascript')
-    readStream = fs.createReadStream(JS)
-  } else if (/style\.css$/i.test(req.url)) {
+    res.end(JS)
+  } else if (base === 'style.css') {
     res.setHeader('Content-Type', 'text/css')
-    readStream = fs.createReadStream(CSS)
-  } else if (/(png)|(jpg)$/i.test(req.url)) {
-    var pic = path.join(__dirname, 'img', req.url.replace(/^.+\/(.+)$/, '$1'))
-    res.setHeader('Content-Type', 'application/octet-stream')
-    readStream = fs.createReadStream(pic)
+    res.end(CSS)
+  } else if (PICS.has(base)) {
+    res.setHeader('Content-Type', 'image/*')
+    res.end(PICS.get(base))
   } else {
     res.statusCode = 404
-    return res.end()
+    res.end()
   }
-
-  res.writeHead(200, {
-  //'Access-Control-Allow-Origin': '*',
-    'Transfer-Encoding': 'chunked',
-    'Content-Encoding': 'gzip'
-  })
-
-  pump(readStream, res, function (err) {
-    if (err) return console.error(err)
-  })
 
 }
 

@@ -1,1 +1,5 @@
-// style.css
+/* style.css */
+
+* {
+  font: 64px arial, sans-serif;
+}
