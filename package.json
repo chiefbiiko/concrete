@@ -4,8 +4,10 @@
   "description": "mini online shop skeleton",
   "main": "index.js",
   "scripts": {
+    "dev": "node_modules/.bin/ballify resources/index.html --live --base64Images=false --output=resources/ball.html.br",
     "test": "tape test.js",
-    "gzip": "node ./util/gzip-resources"
+    "prestart": "node_modules/.bin/ballify resources/index.html --live=false --base64Images=false --brotli=false --gzip=true --output=resources/ball.html.gz",
+    "start": "node index localhost 419 resources/ball.html.gz"
   },
   "author": "Noah Anabiik Schwarz",
   "license": "MIT",
@@ -14,6 +16,7 @@
     "pump": "^2.0.0"
   },
   "devDependencies": {
+    "ballify": "^1.3.0",
     "f-d-wishlist": "0.0.0"
   }
 }

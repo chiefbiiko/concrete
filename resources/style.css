@@ -1,5 +1,48 @@
 /* style.css */
+/* refactor to mobile first!!! */
 
 * {
-  font: 64px arial, sans-serif;
+  font: 16px arial, sans-serif;
+}
+
+#header {
+  display: grid;
+  grid-template-columns: 12.5% 12.5% 12.5% 12.5% 12.5% 12.5% 12.5% 12.5%;
+  grid-template-rows: 50px 30px;
+  align-items: center;
+}
+
+#logo {
+  grid-column: 4 / 6;
+  grid-row: 1;
+}
+
+#nav-cart {
+  grid-column: 8 / 9;
+  grid-row: 1;
+}
+
+#nav-reinigung {
+  grid-column: 1 / 2;
+  grid-row: 2;
+}
+
+#nav-schutz {
+  grid-column: 2 / 3;
+  grid-row: 2;
+}
+
+#nav-gestaltung {
+  grid-column: 3 / 4;
+  grid-row: 2;
+}
+
+#nav-philosophy {
+  grid-column: 7 / 8;
+  grid-row: 2;
+}
+
+#nav-diy {
+  grid-column: 8 / 9;
+  grid-row: 2;
 }
