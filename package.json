@@ -4,7 +4,7 @@
   "description": "bike-shed online shop",
   "main": "index.js",
   "scripts": {
-    "dev": "ballify resources/index.html --live --base64Images=false --output=resources/ball.html.br",
+    "dev": "ballify resources/index.html --live --base64Images=false --brotli=false --output=resources/ball.html",
     "test": "tape test.js",
     "prestart": "ballify resources/index.html --live=false --base64Images=false --brotli=false --gzip=true --output=resources/ball.html.gz",
     "start": "node index localhost 419 resources/ball.html.gz"
