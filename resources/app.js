@@ -14,12 +14,12 @@ function appendChildren (parent, ...children) {
 }
 
 function init () {
-  appendChildren(document.body, trap.header(), trap.menu(), trap.footer())
+  appendChildren(document.body, trap.header(), trap.nav(), trap.footer())
 }
 
 var trap = {
   _header: null,
-  _menu: null,
+  _nav: null,
   _footer: null,
   header () {
     if (this._header) return this._header
@@ -28,24 +28,24 @@ var trap = {
     var cart = make('img')
     var stac = make('img')
     this._header.id = 'header'
-    logo.id = 'logo'
-    cart.id = 'nav-cart'
-    stac.id = 'nav-stac'
+    logo.id = 'header-logo'
+    cart.id = 'header-cart'
+    stac.id = 'header-stac'
     logo.alt = 'logo'
     cart.alt = 'shopping cart'
-    stac.alt = 'navigation stac'
+    stac.alt = 'nav stac'
     appendChildren(this._header, stac, logo, cart)
     return this._header
   },
-menu () {
-    if (this._menu) return this._menu
-    this._menu = make('div')
+  nav () {
+    if (this._nav) return this._nav
+    this._nav = make('div')
     var reinigung = make('span')
     var schutz = make('span')
     var gestaltung = make('span')
     var philosophy = make('span')
     var diy = make('span')
-    this._menu.id = 'menu'
+    this._nav.id = 'nav'
     reinigung.id = 'nav-reinigung'
     schutz.id = 'nav-schutz'
     gestaltung.id = 'nav-gestaltung'
@@ -56,8 +56,8 @@ menu () {
     gestaltung.innerText = 'Gestaltung'
     philosophy.innerText = 'Philosophy'
     diy.innerText = 'DIY'
-    appendChildren(this._menu, reinigung, schutz, gestaltung, philosophy, diy)
-    return this._menu
+    appendChildren(this._nav, reinigung, schutz, gestaltung, philosophy, diy)
+    return this._nav
   },
   footer () {
     if (this._footer) return this._footer
@@ -66,9 +66,9 @@ menu () {
     var kontakt = make('span')
     var agb = make('span')
     this._footer.id = 'footer'
-    mig.id = 'mig'
-    kontakt.id = 'nav-kontakt'
-    agb.id = 'nav-agb'
+    mig.id = 'footer-made-in-germany'
+    kontakt.id = 'footer-kontakt'
+    agb.id = 'footer-agb'
     mig.alt = 'made in germany'
     kontakt.innerText = 'Kontakt'
     agb.innerText = 'AGB'
