@@ -1,6 +1,9 @@
 var trap = {
   _header: null,
   _nav: null,
+  _main: null,
+  _mainSidebar: null,
+  _mainBody: null,
   _footer: null,
   header () {
     if (this._header) return this._header
@@ -17,6 +20,27 @@ var trap = {
     stac.alt = 'nav stac'
     appendChildren(this._header, stac, logo, cart)
     return this._header
+  },
+  main () {
+    if (this._main) return this._main
+    this._main = make('div')
+    this._main.id = 'main'
+    appendChildren(this._main, this.mainSidebar(), this.mainBody())
+    return this._main
+  },
+  mainSidebar () {
+    if (this._mainSidebar) return this._mainSidebar
+    this._mainSidebar = make('div')
+    this._mainSidebar.id = 'main-sidebar'
+
+    return this._mainSidebar
+  },
+  mainBody () {
+    if (this._mainBody) return this._mainBody
+    this._mainBody = make('div')
+    this._mainBody.id = 'main-body'
+
+    return this._mainBody
   },
   nav () {
     if (this._nav) return this._nav
