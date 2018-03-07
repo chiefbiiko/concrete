@@ -14,7 +14,9 @@ function appendChildren (parent, ...children) {
 }
 
 function init () {
-  appendChildren(document.body, trap.header(), trap.nav(), trap.footer())
+  appendChildren(document.body, 
+    trap.header(), trap.nav(), trap.main(), trap.footer()
+  )
 }
 
 window.onload = init
