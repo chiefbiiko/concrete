@@ -32,14 +32,14 @@ var trap = {
     if (this._mainSidebar) return this._mainSidebar
     this._mainSidebar = make('div')
     this._mainSidebar.id = 'main-sidebar'
-
+    this._mainSidebar.innerText = 'mainSidebar'
     return this._mainSidebar
   },
   mainBody () {
     if (this._mainBody) return this._mainBody
     this._mainBody = make('div')
     this._mainBody.id = 'main-body'
-
+    this._mainBody.innerText = 'mainBody'
     return this._mainBody
   },
   nav () {
@@ -79,5 +79,35 @@ var trap = {
     agb.innerText = 'AGB'
     appendChildren(this._footer, mig, kontakt, agb)
     return this._footer
+  },
+  /*
+  conf: Object
+    {
+      src: String,
+      info: String,
+      price: Number // if product price
+    }
+  */
+  makeBox (conf) {
+    if (!conf) conf = {}
+    var box = make('div')
+    var top = make('div')
+    box.classList.add('box')
+    top.classList.add('box-top')
+    box.style.backgroundImage = 'url("' + conf.src + '")'
+    top.innerText = conf.info || 'info text'
+    box.style.display = 'block'
+
+    appendChildren(box, top)
+    if (conf.price) {
+      var tag = make('span')
+      var btn = make('span')
+      tag.classList.add('price-tag')
+      btn.classList.add('btn', 'buy-btn')
+      tag.innerText = conf.price + '$'
+      btn.innerText = 'Buy!'
+      appendChildren(box, tag, btn)
+    }
+    return box
   }
 }

@@ -14,7 +14,12 @@ function appendChildren (parent, ...children) {
 }
 
 function init () {
-  appendChildren(document.body, 
+  var boxconf = {
+    src: 'https://github.com/chiefbiiko/ballify/raw/master/testfiles/minime.jpg',
+    price: 419
+  }
+  appendChildren(trap.mainBody(), trap.makeBox(boxconf), trap.makeBox(boxconf))
+  appendChildren(document.body,
     trap.header(), trap.nav(), trap.main(), trap.footer()
   )
 }
