@@ -96,7 +96,6 @@ var trap = {
     top.classList.add('box-top')
     box.style.backgroundImage = 'url("' + conf.src + '")'
     top.innerText = conf.info || 'info text'
-    box.style.display = 'block'
 
     appendChildren(box, top)
     if (conf.price) {
