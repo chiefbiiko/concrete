@@ -18,7 +18,8 @@ function init () {
     src: 'https://github.com/chiefbiiko/ballify/raw/master/testfiles/minime.jpg',
     price: 419
   }
-  appendChildren(trap.mainBody(), trap.makeBox(boxconf), trap.makeBox(boxconf))
+  // appendChildren(trap.mainBody(), trap.makeBox(boxconf))
+  for (var i = 0; i < 8; i++) trap.mainBody().appendChild(trap.makeBox(boxconf))
   appendChildren(document.body,
     trap.header(), trap.nav(), trap.main(), trap.footer()
   )

@@ -15,6 +15,9 @@ var trap = {
     logo.id = 'header-logo'
     cart.id = 'header-cart'
     stac.id = 'header-stac'
+    logo.classList.add('grid-item')
+    cart.classList.add('grid-item')
+    stac.classList.add('grid-item')
     logo.alt = 'logo'
     cart.alt = 'shopping cart'
     stac.alt = 'nav stac'
@@ -32,6 +35,7 @@ var trap = {
     if (this._mainSidebar) return this._mainSidebar
     this._mainSidebar = make('div')
     this._mainSidebar.id = 'main-sidebar'
+    this._mainSidebar.classList.add('grid-item')
     this._mainSidebar.innerText = 'mainSidebar'
     return this._mainSidebar
   },
@@ -39,6 +43,7 @@ var trap = {
     if (this._mainBody) return this._mainBody
     this._mainBody = make('div')
     this._mainBody.id = 'main-body'
+    this._mainBody.classList.add('grid-item')
     this._mainBody.innerText = 'mainBody'
     return this._mainBody
   },
@@ -56,6 +61,11 @@ var trap = {
     gestaltung.id = 'nav-gestaltung'
     philosophy.id = 'nav-philosophy'
     diy.id = 'nav-diy'
+    reinigung.classList.add('grid-item')
+    schutz.classList.add('grid-item')
+    gestaltung.classList.add('grid-item')
+    philosophy.classList.add('grid-item')
+    diy.classList.add('grid-item')
     reinigung.innerText = 'Reingung'
     schutz.innerText = 'Schutz'
     gestaltung.innerText = 'Gestaltung'
@@ -74,6 +84,9 @@ var trap = {
     mig.id = 'footer-made-in-germany'
     kontakt.id = 'footer-kontakt'
     agb.id = 'footer-agb'
+    mig.classList.add('grid-item')
+    kontakt.classList.add('grid-item')
+    agb.classList.add('grid-item')
     mig.alt = 'made in germany'
     kontakt.innerText = 'Kontakt'
     agb.innerText = 'AGB'

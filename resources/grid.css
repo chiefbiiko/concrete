@@ -10,10 +10,8 @@
 
 #header {
   display: grid;
-  grid-template-columns: 12.5% 12.5% 12.5% 12.5% 12.5% 12.5% 12.5% 12.5%;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
   grid-template-rows: 50px;
-  align-items: center;
-  justify-items: center;
 }
 
 #header-stac {
@@ -33,10 +31,8 @@
 
 #nav {
   display: grid;
-  grid-template-columns: 12.5% 12.5% 12.5% 12.5% 12.5% 12.5% 12.5% 12.5%;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
   grid-template-rows: 40px 40px 40px 40px 40px;
-  align-items: center;
-  justify-items: center;
 }
 
 #nav-reinigung {
@@ -66,13 +62,14 @@
 
 #main {
   display: grid;
-  grid-template-columns: 12.5% 12.5% 12.5% 12.5% 12.5% 12.5% 12.5% 12.5%;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
   grid-template-rows: 150px 150px 150px;
-  align-items: center;
-  justify-items: center;
 }
 
 #main-body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
   grid-row: 2 / 4;
   grid-column: 1 / 9;
 }
@@ -84,10 +81,8 @@
 
 #footer {
   display: grid;
-  grid-template-columns: 12.5% 12.5% 12.5% 12.5% 12.5% 12.5% 12.5% 12.5%;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
   grid-template-rows: 30px 40px;
-  align-items: center;
-  justify-items: center;
 }
 
 #footer-made-in-germany {
